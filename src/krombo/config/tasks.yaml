@@ -3,7 +3,7 @@ research_task:
     Search for smart contract audits for {topic} and analyze their security.
   expected_output: >
     A summary of the security audits for {topic}, including:
-    - List of audit sources (e.g., CertiK, Quantstamp, Trail of Bits)
+    - List of audit reports from reputable sources  incudling enterpise security firms (e.g., CertiK, Quantstamp, Trail of Bits) and public contests (e.g., Immunefi, Hacken, HackerOne, code4rena, etc.)
     - Identified vulnerabilities (critical, high, medium, low)
     - Any unresolved security risks
     - Final audit ratings or security scores (if available)
