@@ -1,17 +1,23 @@
 research_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
+    Search for smart contract audits for {topic} and analyze their security.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A summary of the security audits for {topic}, including:
+    - List of audit sources (e.g., CertiK, Quantstamp, Trail of Bits)
+    - Identified vulnerabilities (critical, high, medium, low)
+    - Any unresolved security risks
+    - Final audit ratings or security scores (if available)
+    - If no audit exists, provide an assessment based on available security documentation.
+  agent: security_auditor
 
-reporting_task:
+sentiment_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Search online discussions and determine sentiment regarding {topic}.
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A sentiment analysis summary for {topic}, including:
+    - General public perception (positive, neutral, or negative)
+    - Key discussion points and concerns raised by the community
+    - References to potential scams, rug pulls, or fraud
+    - Popular sources of sentiment (Reddit, Twitter, Discord, Telegram)
+    - A confidence level in the sentiment analysis.
+  agent: sentiment_analyst

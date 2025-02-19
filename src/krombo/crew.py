@@ -15,17 +15,17 @@ class Krombo():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def researcher(self) -> Agent:
+	def security_auditor(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
+			config=self.agents_config['security_auditor'],
 			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def sentiment_analyst(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['sentiment_analyst'],
 			verbose=True
 		)
 
@@ -36,10 +36,9 @@ class Krombo():
 		)
 
 	@task
-	def reporting_task(self) -> Task:
+	def sentiment_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['sentiment_task'],
 		)
 
 	@crew
