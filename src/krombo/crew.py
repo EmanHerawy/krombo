@@ -5,8 +5,11 @@ from crewai.project import CrewBase, agent, crew, task
 # from krombo.tools.custom_tool import MyCustomTool
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 
+# Initialize tools
+search_tool = SerperDevTool()
+scrape_tool = ScrapeWebsiteTool()
 @CrewBase
 class Krombo():
 	"""Krombo crew"""
@@ -18,6 +21,8 @@ class Krombo():
 	def security_auditor(self) -> Agent:
 		return Agent(
 			config=self.agents_config['security_auditor'],
+			tools=[search_tool, scrape_tool],
+			memory=True,
 			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
@@ -26,6 +31,9 @@ class Krombo():
 	def sentiment_analyst(self) -> Agent:
 		return Agent(
 			config=self.agents_config['sentiment_analyst'],
+			allow_delegation=True,
+			memory=True,
+			tools=[search_tool, scrape_tool],
 			verbose=True
 		)
 
