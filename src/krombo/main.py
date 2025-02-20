@@ -17,6 +17,7 @@ def run():
     """
     inputs = {
         'topic': 'Wormhole'
+        
     }
     Krombo().crew().kickoff(inputs=inputs)
 
