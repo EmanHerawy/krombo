@@ -1,23 +1,28 @@
-research_task:
+blacklist_check:
   description: >
-    Search for smart contract audits for {topic} and analyze their security.
+    Check if {topic} appears in scam and blacklist databases.
   expected_output: >
-    A summary of the security audits for {topic}, including:
-    - List of audit reports from reputable sources  incudling enterpise security firms (e.g., CertiK, Quantstamp, Trail of Bits) and public contests (e.g., Immunefi, Hacken, HackerOne, code4rena, etc.)
-    - Identified vulnerabilities (critical, high, medium, low)
-    - Any unresolved security risks
-    - Final audit ratings or security scores (if available)
-    - If no audit exists, provide an assessment based on available security documentation.
-  agent: security_auditor
+    A boolean value (True/False) and a list of sources where this wallet is flagged.
+  agent: wallet_blacklist_checker
 
-sentiment_task:
+transaction_behavior_analysis:
   description: >
-    Search online discussions and determine sentiment regarding {topic}.
+    Analyze the on-chain transaction patterns of {topic}.
   expected_output: >
-    A sentiment analysis summary for {topic}, including:
-    - General public perception (positive, neutral, or negative)
-    - Key discussion points and concerns raised by the community
-    - References to potential scams, rug pulls, or fraud
-    - Popular sources of sentiment (Reddit, Twitter, Discord, Telegram)
-    - A confidence level in the sentiment analysis.
-  agent: sentiment_analyst
+    A report highlighting suspicious activity like frequent rug pulls, mixing services,
+    high-volume transactions, or repeated flash loan usage.
+  agent: transaction_behavior_analyst
+
+sentiment_check:
+  description: >
+    Scan social media and blockchain forums for mentions of {topic}.
+  expected_output: >
+    A summary of public discussions and sentiment regarding this wallet.
+  agent: sentiment_reputation_analyst
+
+scam_likelihood_report:
+  description: >
+    Combine findings from all agents to calculate a scam likelihood score.
+  expected_output: >
+    A final risk assessment report with a score from 0-100 and a simple explanation.
+  agent: risk_assessment_expert

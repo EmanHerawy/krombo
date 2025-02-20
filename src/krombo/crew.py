@@ -21,9 +21,9 @@ class Krombo():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def security_auditor(self) -> Agent:
+	def wallet_blacklist_checker(self) -> Agent:
 		return Agent(
-			config=self.agents_config['security_auditor'],
+			config=self.agents_config['wallet_blacklist_checker'],
 			tools=[search_tool, scrape_tool],
 			memory=True,
 			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
@@ -31,25 +31,57 @@ class Krombo():
 		)
 
 	@agent
-	def sentiment_analyst(self) -> Agent:
+	def transaction_behavior_analyst(self) -> Agent:
 		return Agent(
-			config=self.agents_config['sentiment_analyst'],
+			config=self.agents_config['transaction_behavior_analyst'],
+			allow_delegation=True,
+			memory=True,
+			tools=[search_tool],
+			verbose=True
+		)
+	@agent
+	def sentiment_reputation_analyst(self) -> Agent:
+		return Agent(
+			config=self.agents_config['sentiment_reputation_analyst'],
+			allow_delegation=True,
+			memory=True,
+			tools=[search_tool],
+			verbose=True
+		)
+	@agent
+	def risk_assessment_expert(self) -> Agent:
+		return Agent(
+			config=self.agents_config['risk_assessment_expert'],
 			allow_delegation=True,
 			memory=True,
 			tools=[search_tool],
 			verbose=True
 		)
 
+
+
 	@task
-	def research_task(self) -> Task:
+	def blacklist_check(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['blacklist_check'],
 		)
 
 	@task
-	def sentiment_task(self) -> Task:
+	def transaction_behavior_analysis(self) -> Task:
 		return Task(
-			config=self.tasks_config['sentiment_task'],
+			config=self.tasks_config['transaction_behavior_analysis'],
+		)
+
+	@task
+	def sentiment_check(self) -> Task:
+		return Task(
+			config=self.tasks_config['sentiment_check'],
+		)
+
+	@task
+	def scam_likelihood_report(self) -> Task:
+		return Task(
+			config=self.tasks_config['scam_likelihood_report'],
 		)
 
 	@crew
