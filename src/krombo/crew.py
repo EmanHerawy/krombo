@@ -19,13 +19,22 @@ class Krombo():
 
 	agents_config = 'config/agents.yaml'
 	tasks_config = 'config/tasks.yaml'
-
+	@agent
+	def researcher(self) -> Agent:
+		return Agent(
+			config=self.agents_config['researcher'],
+			tools=[search_tool, scrape_tool],
+			memory=True,
+			allow_delegation=True,	
+			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
+			verbose=True
+		)
 	@agent
 	def wallet_blacklist_checker(self) -> Agent:
 		return Agent(
 			config=self.agents_config['wallet_blacklist_checker'],
-			tools=[search_tool, scrape_tool],
 			memory=True,
+			allow_delegation=True,
 			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
@@ -45,7 +54,7 @@ class Krombo():
 			config=self.agents_config['sentiment_reputation_analyst'],
 			allow_delegation=True,
 			memory=True,
-			tools=[search_tool],
+			tools=[search_tool, scrape_tool],
 			verbose=True
 		)
 	@agent
@@ -54,11 +63,15 @@ class Krombo():
 			config=self.agents_config['risk_assessment_expert'],
 			allow_delegation=True,
 			memory=True,
-			tools=[search_tool],
+			tools=[search_tool, scrape_tool],
 			verbose=True
 		)
 
-
+	@task
+	def research_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['research_task'],
+		)
 
 	@task
 	def blacklist_check(self) -> Task:
@@ -82,6 +95,8 @@ class Krombo():
 	def scam_likelihood_report(self) -> Task:
 		return Task(
 			config=self.tasks_config['scam_likelihood_report'],
+			output_file='report.md'
+
 		)
 
 	@crew

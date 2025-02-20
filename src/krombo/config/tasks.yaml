@@ -1,6 +1,18 @@
+research_task:
+  description: >
+    Query blockchain forensic databases, security databases and websites to retrieve historical transaction data, blacklist status, 
+    and connections to known scams interacting with {topic}.
+  expected_output: >
+    A structured dataset containing:
+    - Transaction history (last 100 transactions)
+    - Wallet labels (if it’s linked to scams or exchanges)
+    - Connection to flagged entities
+    - Risk assessment score (if available)
+  agent: researcher
+  
 blacklist_check:
   description: >
-    Check if {topic} appears in scam and blacklist databases.
+    Check if {topic} appears in scam and blacklist databases or marked by you previously as a scam.
   expected_output: >
     A boolean value (True/False) and a list of sources where this wallet is flagged.
   agent: wallet_blacklist_checker
