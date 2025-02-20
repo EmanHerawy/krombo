@@ -50,56 +50,7 @@ Krombo utilizes **CrewAI** to coordinate multiple agents, each specializing in *
 ## Demo 
 check the demo in the `output.logs` file and the screenshot in the `screenshots` folder.
 
-## **📌 Installation**  
 
-1️⃣ **Clone the Repository**  
-```bash
-git clone https://github.com/yourusername/krombo.git
-cd krombo
-```
-
-2️⃣ **Set Up Virtual Environment**  
-```bash
-python3 -m venv .venv
-source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
-```
-
-3️⃣ **Install Dependencies**  
-```bash
-pip install -r requirements.txt
-```
-
-4️⃣ **Set Up API Keys** (Blockchain explorers, forensic databases, sentiment analysis)  
-Create a `.env` file and add your API keys:  
-```ini
-ETHERSCAN_API_KEY=your_key_here
-TWITTER_API_KEY=your_key_here
-```
-
----
-
-## **📌 Usage**  
-
-### **🔍 Run a Full Scam Risk Check**  
-```bash
-python main.py --check "0xWalletAddress"
-```
-➡️ **Output**:  
-- ✅ **Is the wallet flagged as a scam?** True/False  
-- 🔍 **Blacklist Sources**: [Etherscan, Chainalysis, etc.]  
-- ⚠️ **Risk Score:** 85/100 (High Risk)  
-- 🛡️ **Reason for flagging:** Rug pull, wash trading, etc.  
-
-### **📊 Get Market Sentiment & Reputation Analysis**  
-```bash
-python main.py --analyze "TokenName"
-```
-➡️ **Output**:  
-- 📢 **Public Sentiment:** 60% Negative  
-- 🚨 **Community Warnings:** Reports of scam or phishing  
-- 📑 **Recommendation:** Avoid investing  
-
----
 
 ## **🛠️ CrewAI Workflow**  
 
@@ -118,10 +69,6 @@ python main.py --analyze "TokenName"
 
 ---
 
-## **📜 License**  
-This project is licensed under the **MIT License**.  
-
----
 
 ## **🙌 Contributing**  
 Pull requests are welcome! Please open an issue for feature requests or bug reports.  
