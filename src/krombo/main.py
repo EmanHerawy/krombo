@@ -16,7 +16,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'Wormhole'
+        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
+        "blockchain_name": "Ethereum"
         
     }
     Krombo().crew().kickoff(inputs=inputs)
@@ -27,7 +28,8 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": "Wormhole"
+        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
+        "blockchain_name": "Ethereum"
     }
     try:
         Krombo().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
@@ -50,7 +52,8 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "topic": "Wormhole"
+        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
+        "blockchain_name": "Ethereum"
     }
     try:
         Krombo().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)

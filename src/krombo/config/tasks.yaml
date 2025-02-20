@@ -1,7 +1,7 @@
 research_task:
   description: >
-    Query blockchain forensic databases, security databases and websites to retrieve historical transaction data, blacklist status, 
-    and connections to known scams interacting with {topic}.
+    Query and scrap blockchain explorers for a given {blockchain_name}, blockchain forensic databases, security databases and websites to retrieve historical transaction data, blacklist status, 
+    and connections to known scams interacting with {wallet_address}.
   expected_output: >
     A structured dataset containing:
     - Transaction history (last 100 transactions)
@@ -9,17 +9,17 @@ research_task:
     - Connection to flagged entities
     - Risk assessment score (if available)
   agent: researcher
-  
+
 blacklist_check:
   description: >
-    Check if {topic} appears in scam and blacklist databases or marked by you previously as a scam.
+    Check if {wallet_address} appears in scam and blacklist databases for {blockchain_name} or marked by you previously as a scam.
   expected_output: >
     A boolean value (True/False) and a list of sources where this wallet is flagged.
   agent: wallet_blacklist_checker
 
 transaction_behavior_analysis:
   description: >
-    Analyze the on-chain transaction patterns of {topic}.
+    Analyze the on-chain transaction patterns of {wallet_address} in {blockchain_name}
   expected_output: >
     A report highlighting suspicious activity like frequent rug pulls, mixing services,
     high-volume transactions, or repeated flash loan usage.
@@ -27,7 +27,7 @@ transaction_behavior_analysis:
 
 sentiment_check:
   description: >
-    Scan social media and blockchain forums for mentions of {topic}.
+    Scan social media and {blockchain_name} forums for mentions of {wallet_address}.
   expected_output: >
     A summary of public discussions and sentiment regarding this wallet.
   agent: sentiment_reputation_analyst
