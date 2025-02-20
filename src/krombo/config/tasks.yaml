@@ -1,11 +1,11 @@
 research_task:
   description: >
-    If {topic} is a valid wallet address or ENS name:
+    If {topic} is a valid ethereum address or ens name, ripple address, aptos address, polkadot address, bitcoin address, or other blockchain address,
       - Query and scrape blockchain explorers for {blockchain_name}, forensic databases, and security intelligence sources.
       - Retrieve historical transaction data (last 100 transactions), blacklist status, and connections to known scams.
 
-    If {topic} is NOT a wallet address or ENS name:
-      - Identify whether it is a cryptocurrency, token, NFT, or crypto project.
+    If {topic} is NOT a ethereum address or ens name, ripple address, aptos address, polkadot address, bitcoin address, or other blockchain address:
+      - Identify whether it is a cryptocurrency, token, NFT, or crypto project by searching the internet.
       - If identified, retrieve and analyze:
         - Audit reports & security reviews.
         - Historical transaction data.
@@ -18,7 +18,7 @@ research_task:
   expected_output: >
     {
       "topic": "{topic}",
-      "entity_type": "wallet_address | ENS_name | token | NFT | project",
+      "entity_type": "ethereum address | ens name | ripple address | aptos address | polkadot address | bitcoin address | token | NFT | project",
       "transaction_history": ["List of last 100 transactions with timestamps, counterparties, and amounts"],
       "wallet_labels": ["Tags such as 'scam', 'exchange', 'mixer service', 'high-risk'"],
       "blacklist_status": {
