@@ -16,8 +16,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
-        "blockchain_name": "Ethereum"
+        "wallet_address": "LiquidSwap",
+        "blockchain_name": "Aptos"
         
     }
     Krombo().crew().kickoff(inputs=inputs)
