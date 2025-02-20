@@ -49,7 +49,7 @@ Krombo utilizes **CrewAI** to coordinate multiple agents, each specializing in *
 
 ## Demo 
 check the demo in the `output.logs` file and the screenshot in the `screenshots` folder.
-
+- (Presentation)[https://www.loom.com/share/e593fd836f5e4970856a823b428c02de?sid=285b902c-e38d-4e16-8862-31d9b6431183] 
 
 
 ## **🛠️ CrewAI Workflow**  
