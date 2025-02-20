@@ -16,8 +16,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        "topic": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
-        "blockchain_name": "ripple xrpl"
+        "topic": "0x28fb66a9259ba21ba1c97f8fb99195ced1811a23706966c244eaea7ed9acc4e5",
+        "blockchain_name": "Aptos"
         
     }
     Krombo().crew().kickoff(inputs=inputs)
