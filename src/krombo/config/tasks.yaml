@@ -1,42 +1,106 @@
 research_task:
   description: >
-    if topic is a valid address or ens name, Query and scrap blockchain explorers for a given {blockchain_name}, blockchain forensic databases, security databases and websites to retrieve historical transaction data, blacklist status, 
-    and connections to known scams interacting with topic. 
-    if topic is not a valid address or ens name, check if it is a crypto currency, token , NFT or other asset. if it is, check if it is a scam or not by querying security audit reports and websites to retrieve historical transaction data, blacklist status,
+    If {topic} is a valid wallet address or ENS name:
+      - Query and scrape blockchain explorers for {blockchain_name}, forensic databases, and security intelligence sources.
+      - Retrieve historical transaction data (last 100 transactions), blacklist status, and connections to known scams.
+
+    If {topic} is NOT a wallet address or ENS name:
+      - Identify whether it is a cryptocurrency, token, NFT, or crypto project.
+      - If identified, retrieve and analyze:
+        - Audit reports & security reviews.
+        - Historical transaction data.
+        - Blacklist status & scam alerts.
+        - Smart contract addresses (if available) for further inspection.
+
+    If {topic} does not match any known crypto entity:
+      - Return a message stating: "Topic is not a valid wallet address, ENS name, or recognized crypto project."
 
   expected_output: >
-    A structured dataset containing:
-    - Transaction history (last 100 transactions)
-    - Wallet labels (if it’s linked to scams or exchanges)
-    - Connection to flagged entities
-    - Risk assessment score (if available)
+    {
+      "topic": "{topic}",
+      "entity_type": "wallet_address | ENS_name | token | NFT | project",
+      "transaction_history": ["List of last 100 transactions with timestamps, counterparties, and amounts"],
+      "wallet_labels": ["Tags such as 'scam', 'exchange', 'mixer service', 'high-risk'"],
+      "blacklist_status": {
+        "flagged": true/false,
+        "sources": ["List of sources where topic is flagged, if any"]
+      },
+      "known_associations": ["List of linked scam wallets or illicit transactions"],
+      "contract_addresses": ["List of contract addresses if topic is a token or project"],
+      "risk_assessment_score": "0-100 (if available)",
+      "message": "Topic status explanation (if unidentified or flagged)"
+    }
   agent: researcher
 
 blacklist_check:
   description: >
-    Check if topic appears in scam and blacklist databases for {blockchain_name} or marked by you previously as a scam.
+    Verify if {topic} appears in scam and blacklist databases for {blockchain_name} or has been previously flagged by the user.
+    - Search across multiple scam and blacklist repositories.
+    - Identify whether this wallet or contract address is marked as malicious.
+    - Cross-check against known phishing, rug-pull, and scam reports.
+
   expected_output: >
-    A boolean value (True/False) and a list of sources where this wallet is flagged.
+    {
+      "topic": "{topic}",
+      "flagged": true/false,
+      "blacklist_sources": ["List of sources where topic is flagged"],
+      "flag_reason": "Short description of why it was flagged (e.g., phishing, scam, exploit, etc.)"
+    }
   agent: wallet_blacklist_checker
 
 transaction_behavior_analysis:
   description: >
-    Analyze the on-chain transaction patterns of topic in {blockchain_name}
+    Examine the on-chain transaction history and behavior patterns of {topic} in {blockchain_name}.
+    - Detect patterns of illicit activities such as:
+      - Frequent rug pulls or scam-related fund movements.
+      - Use of mixing services or tumblers.
+      - Rapid fund movements across multiple wallets.
+      - Suspiciously high-volume or repetitive transactions.
+
   expected_output: >
-    A report highlighting suspicious activity like frequent rug pulls, mixing services,
-    high-volume transactions, or repeated flash loan usage.
+    {
+      "topic": "{topic}",
+      "suspicious_activity_detected": true/false,
+      "activity_analysis": ["Summary of notable suspicious transactions"],
+      "risk_factors": ["List of risk indicators, e.g., 'high wash trading', 'linked to mixer', 'flash loan abuse'"],
+      "risk_score": "0-100 (if available)"
+    }
   agent: transaction_behavior_analyst
 
 sentiment_check:
   description: >
-    Scan social media and {blockchain_name} forums for mentions of topic.
+    Analyze social media, news, and blockchain forums for mentions and discussions about {topic}.
+    - Scan Twitter, Reddit, Telegram, Discord, and blockchain-specific forums for:
+      - Reports of scams or warnings.
+      - Community sentiment (positive, neutral, negative).
+      - User experiences and complaints.
+
   expected_output: >
-    A summary of public discussions and sentiment regarding this wallet.
+    {
+      "topic": "{topic}",
+      "sentiment_score": "-100 to 100 (negative to positive sentiment scale)",
+      "discussion_summary": ["Key takeaways from public discussions"],
+      "reported_issues": ["List of complaints or warnings from users"],
+      "sources": ["List of sources where discussions were found"]
+    }
   agent: sentiment_reputation_analyst
 
 scam_likelihood_report:
   description: >
-    Combine findings from all agents to calculate a scam likelihood score.
+    Aggregate all findings to generate a final scam likelihood score and risk report.
+    - Combine data from all agents:
+      - Blacklist status.
+      - On-chain transaction behavior.
+      - Social sentiment and user warnings.
+    - Provide a clear explanation of the risk factors.
+    - Assign a scam likelihood score between 0-100.
+    - Offer recommendations for user safety.
+
   expected_output: >
-    A final risk assessment report with a score from 0-100 and a simple explanation.
+    {
+      "topic": "{topic}",
+      "scam_likelihood_score": "0-100",
+      "risk_summary": "Brief explanation of why this score was assigned",
+      "recommendation": "Suggested action (e.g., avoid interaction, report, safe to use, etc.)"
+    }
   agent: risk_assessment_expert

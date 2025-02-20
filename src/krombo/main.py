@@ -16,7 +16,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        "wallet_address": "LiquidSwap",
+        "topic": "LiquidSwap",
         "blockchain_name": "Aptos"
         
     }
@@ -28,7 +28,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
+        "topic": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
         "blockchain_name": "Ethereum"
     }
     try:
@@ -52,7 +52,7 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "wallet_address": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
+        "topic": "0x629e7Da20197a5429d30da36E77d06CdF796b71A",
         "blockchain_name": "Ethereum"
     }
     try:
